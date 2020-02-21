@@ -14,11 +14,12 @@ class Produit
    //-------------------------------------------//
    ////////////CONSTRUCTEUR//////////////
    //-----------------------------------------//
-   public function hydrate(array $attribut)
+   public function __construct(array $method)
    {
-      $this->hydrate($attribut);
+      $this->hydrate($method);
    }
-   public function __construct(array $attribut)
+
+   public function hydrate(array $attribut)
    {
       foreach ($attribut as $key => $values) {
          //on recupere les setter et on les stockent dans la variable 'method' et on recupere les premiere lettre de chaque methodes
@@ -47,9 +48,9 @@ class Produit
     * return $nomProduit
     * type : string
     */
-   public function getNom()
+   public function getNomProduit()
    {
-      return $this->nom;
+      return $this->nomProduit;
    }
 
    /**
@@ -119,7 +120,7 @@ class Produit
 
    /**
     * set value quantiteProduit
-    * type: intefer
+    * type: integer
     */
    public function setQuantiteProduit($quantiteProduit)
    {
@@ -144,6 +145,12 @@ class Produit
       $this->prix = $prix;
    }
 }
-$mylea = new Client(['id' => 1, 'nomProduit' => 'mylea', 'descriptionProduit' => 154, 'quantiteProduit' => 3, 'isAvailable' => 1, 'prix' => 58]);
+$product = new Produit(['id' => 1, 'nomProduit' => 'mylea', 'descriptionProduit' => 154, 'quantiteProduit' => 3, 'isAvailable' => 1, 'prix' => 58]);
 
-var_dump($mylea);
+var_dump($product);
+echo $product->getId() . '<br>';
+echo $product->getNomProduit() . '<br>';
+echo $product->getdescriptionProduit() . '<br>';
+echo $product->getquantiteProduit() . '<br>';
+echo $product->getIsAvailable() . '<br>';
+echo $product->getPrix() . '<br>';
