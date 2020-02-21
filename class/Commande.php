@@ -8,6 +8,30 @@ class Commande
    private $isDelivred;
 
 
+
+
+
+
+   //-------------------------------------------//
+   ////////////CONSTRUCTEUR//////////////
+   //-----------------------------------------//
+   public function __construct(array $method)
+   {
+      $this->hydrate($method);
+   }
+
+   public function hydrate(array $attribut)
+   {
+      foreach ($attribut as $key => $values) {
+         //on recupere les setter et on les stockent dans la variable 'method' et on recupere les premiere lettre de chaque methodes
+         $method = "set" . ucfirst($key);
+         // on verifie si la methode
+         if (method_exists($this, $method)) {
+            $this->$method($values);
+         }
+      }
+   }
+
    //GETTERS 
 
 
@@ -87,3 +111,10 @@ class Commande
       $this->isDelivred = $isDelivred;
    }
 }
+$product = new Commande(['id' => 1, 'nomCommande' => 'mylea', 'dateCommande' => 154, 'isDelivred' => 1]);
+
+var_dump($product);
+echo $product->getId() . '<br>';
+echo $product->getNomCommande() . '<br>';
+echo $product->getDateCommande() . '<br>';
+echo $product->getIsDelivred() . '<br>';
