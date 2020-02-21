@@ -111,7 +111,7 @@ class Commande
       $this->isDelivred = $isDelivred;
    }
 }
-$product = new Commande(['id' => 1, 'nomCommande' => 'mylea', 'dateCommande' => 154, 'isDelivred' => 1]);
+$product = new Commande(['id' => 1, 'nomCommande' => 'mylea', 'dateCommande' => new DateTime(), 'isDelivred' => 1]);
 
 var_dump($product);
 echo $product->getId() . '<br>';
